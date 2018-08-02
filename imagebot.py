@@ -7,9 +7,10 @@ async def on_ready():
 	print('Username: ' + bot.user.name)
 	print('Client ID: ' + bot.user.id)
 	print('--------------')
-	print('TKP Image Bot READY!')
+	loadedmods = ''
 	for extension in modules:
 		print('Extension loaded: ' + extension[5:])
+	print('TKP Image Bot READY!')
 
 @bot.command()
 async def load(extension_name : str):
@@ -42,5 +43,5 @@ if __name__ == "__main__":
 		except Exception as e:
 			exc = '{}: {}'.format(type(e).__name__, e)
 			print('Failed to load extension {}\n{}'.format(extension, exc))
-	
+
 bot.run(token)
