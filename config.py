@@ -12,5 +12,5 @@ bot = commands.Bot(description="Custom Image bot www.TheKinkyPlace.net", command
 token = 'PUT YOUR DISCORD TOKEN HERE'
 
 reddit = praw.Reddit(client_id='REDDIT CLIENT ID',
-					 client_secret='REDDIT CLIENT SECRET',
-					 user_agent='REDDIT CLIENT NAME')
+					client_secret='REDDIT CLIENT SECRET',
+					user_agent='REDDIT CLIENT NAME')
