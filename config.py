@@ -6,7 +6,9 @@ import random
 import string
 
 modules = ["cogs.cum",
-		"cogs.boobs"
+		"cogs.boobs",
+		"cogs.cock",
+		"cogs.dick"
 		]
 bot = commands.Bot(description="Custom Image bot www.TheKinkyPlace.net", command_prefix="!")
 token = 'PUT YOUR DISCORD TOKEN HERE'
