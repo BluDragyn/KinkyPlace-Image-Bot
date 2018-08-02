@@ -1,48 +1,46 @@
-import praw
-import random
-from discord.ext import commands
-import asyncio
-
-# Begin bot configuration
-# 
-bot = commands.Bot(description="BOT DESCRIPTION GOES HERE", command_prefix="!") # Change description and command prefix to suit
-token = 'DISCORD BOT USER TOKEN GOES HERE' 	# Remove before uploading
-reddit = praw.Reddit(client_id='REDDIT BOT CLIENT ID GOES HERE', 						# Remove before uploading
-					client_secret='REDDIT BOT CLIENT SECRET GOES HERE',		# Remove before uploading
-					user_agent='REDDIT BOT NAME GOES HERE - MUST BE UNIQUE')							# Remove before uploading
-# End bot configuration. Do not edit below unless you know what you are doing
-# ############################################################################
-# ############################################################################
+from config import *
 
 @bot.event
 async def on_ready():
+	cogs = ''
 	print('Logged in as')
 	print('Username: ' + bot.user.name)
 	print('Client ID: ' + bot.user.id)
 	print('--------------')
 	print('TKP Image Bot READY!')
-					 
-@bot.command()
-async def cum():
-	sublist = ['PrettyCumSluts',
-			'AmateurCumsluts',
-			'GWCumsluts',
-			'cumsluts',
-			'GirlsFinishingTheJob',
-			'unexpectedcum',
-			'party_facials',
-			'before_after_cumsluts',
-			'cumfetish',
-			'cumonclothes',
-			'Cumtyphoon'
-			]
-	sub = random.choice(sublist)
-	image = reddit.subreddit(sub).new()
-	post_to_pick = random.randint(1, 50)
-	for i in range(0, post_to_pick):
-		submission = next(x for x in image if not x.stickied)
-		
-	await bot.say(submission.url)
-	print('Command `cum` executed. Subreddit used: `' + sub + '`.')
+	for extension in modules:
+		print('Extension loaded: ' + extension[5:])
 
+@bot.command()
+async def load(extension_name : str):
+	try:
+		bot.load_extension(extension_name)
+	except (AttributeError, ImportError) as e:
+		await bot.say("```py\n{}: {}\n```".format(type(e).__name__, str(e)))
+		return
+	await bot.say("```{} loaded.```".format(extension_name))
+
+@bot.command()
+async def unload(extension_name : str):
+	bot.unload_extension(extension_name)
+	await bot.say("```{} unloaded.```".format(extension_name))
+	
+@bot.command()
+async def reload(extension_name : str):
+	bot.unload_extension(extension_name)
+	try:
+		bot.load_extension(extension_name)
+	except (AttributeError, ImportError) as e:
+		await bot.say("```py\n{}: {}\n```".format(type(e).__name__, str(e)))
+		return
+	await bot.say("```{} reloaded.```".format(extension_name))
+
+if __name__ == "__main__":
+	for extension in modules:
+		try:
+			bot.load_extension(extension)
+		except Exception as e:
+			exc = '{}: {}'.format(type(e).__name__, e)
+			print('Failed to load extension {}\n{}'.format(extension, exc))
+	
 bot.run(token)
