@@ -1,23 +1,14 @@
 from config import *
 
-class Cum():
+class Lesbian():
 	def __init__(self, bot):
 		self.bot = bot
 
 	@commands.command()
-	async def cum(self):
-		sublist = ['PrettyCumSluts',
-				'AmateurCumsluts',
-				'GWCumsluts',
-				'cumsluts',
-				'GirlsFinishingTheJob',
-				'unexpectedcum',
-				'before_after_cumsluts',
-				'cumfetish',
-				'cumonclothes',
-				'Cumtyphoon',
-				'Cumontits',
-				'FacialFun'
+	async def lesbian(self):
+		sublist = ['lesbians',
+				'Lesbian_gifs',
+				'lesbianporn'
 				]
 		attempts = 1
 		while attempts < 5:
@@ -30,10 +21,10 @@ class Cum():
 	
 				await self.bot.say(submission.url)
 				attempts = 5
-				print('Command `cum` executed. Subreddit used: `' + sub + '`. Post: ' + str(post))
+				print('Command `lesbian` executed. Subreddit used: `' + sub + '`. Post: ' + str(post))
 			except:
 				print('Error fetching image from ' + sub + '. Trying again. (post number: ' + str(post) + ') attempt: ' + str(attempts))
 				attempts = attempts + 1
 
 def setup(bot):
-    bot.add_cog(Cum(bot))
+    bot.add_cog(Lesbian(bot))

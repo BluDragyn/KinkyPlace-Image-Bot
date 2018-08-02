@@ -29,7 +29,9 @@ class Boobs():
 	
 				await self.bot.say(submission.url)
 				attempts = 5
+				print('Command `boobs` executed. Subreddit used: `' + sub + '`. Post: ' + str(post))
 			except:
+				print('Error fetching image from ' + sub + '. Trying again. (post number: ' + str(post) + ') attempt: ' + str(attempts))
 				attempts = attempts + 1
 
 def setup(bot):
