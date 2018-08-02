@@ -30,11 +30,7 @@ class Cum():
 	
 				await self.bot.say(submission.url)
 				attempts = 5
-				await self.bot.say('Command `cum` executed. Subreddit used: `' + sub + '`. Post: '+ str(post))
-				print('Command `cum` executed. Subreddit used: `' + sub + '`. Post: ' + str(post))
 			except:
-				print('Error fetching image from ' + sub + '. Trying again. (post number: ' + str(post) + ') attempt: ' + str(attempts))
-				await self.bot.say('Error fetching image from ' + sub + '. Trying again. (post number: ' + str(post) + ') attempt: ' + str(attempts))
 				attempts = attempts + 1
 
 def setup(bot):
