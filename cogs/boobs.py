@@ -1,23 +1,22 @@
 from config import *
 
-class Cum():
+class Boobs():
 	def __init__(self, bot):
 		self.bot = bot
 
 	@commands.command()
-	async def cum(self):
-		sublist = ['PrettyCumSluts',
-				'AmateurCumsluts',
-				'GWCumsluts',
-				'cumsluts',
-				'GirlsFinishingTheJob',
-				'unexpectedcum',
-				'before_after_cumsluts',
-				'cumfetish',
-				'cumonclothes',
-				'Cumtyphoon',
-				'Cumontits',
-				'FacialFun'
+	async def boobs(self):
+		sublist = ['boobs',
+				'boobbounce',
+				'BiggerThanYouTHought',
+				'BustyPetite',
+				'PerfectTits',
+				'BigBoobsGW',
+				'tits',
+				'BoobGifs',
+				'big-natural-tits',
+				'TittyDrop',
+				'homegrowntits'
 				]
 		attempts = 1
 		while attempts < 5:
@@ -30,12 +29,12 @@ class Cum():
 	
 				await self.bot.say(submission.url)
 				attempts = 5
-				await self.bot.say('Command `cum` executed. Subreddit used: `' + sub + '`. Post: '+ str(post))
-				print('Command `cum` executed. Subreddit used: `' + sub + '`. Post: ' + str(post))
+				await self.bot.say('Command `boobs` executed. Subreddit used: `' + sub + '`. Post: '+ str(post))
+				print('Command `boobs` executed. Subreddit used: `' + sub + '`. Post: ' + str(post))
 			except:
 				print('Error fetching image from ' + sub + '. Trying again. (post number: ' + str(post) + ') attempt: ' + str(attempts))
 				await self.bot.say('Error fetching image from ' + sub + '. Trying again. (post number: ' + str(post) + ') attempt: ' + str(attempts))
 				attempts = attempts + 1
 
 def setup(bot):
-    bot.add_cog(Cum(bot))
+    bot.add_cog(Boobs(bot))
